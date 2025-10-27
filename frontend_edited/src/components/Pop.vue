@@ -153,7 +153,7 @@ export default {
             console.log('Fetching data for colleague ID:', colleagueId); // Check what ID is being sent
             try {
                 // const response = await fetch(`http://127.0.0.1:5000/phishing_opened/${colleagueId}`);
-                const response = await fetch(`http://127.0.0.1:5000/phishing_opened/${colleagueId}`);
+                const response = await fetch(`https://telecrm-phishing.onrender.com/phishing_opened/${colleagueId}`);
                 const data = await response.json();
                 console.log('Response data:', data); // Log the response data
                 if (data.showPopup) {
@@ -217,7 +217,7 @@ export default {
         async fetchQuestions() {
             try {
                 // const response = await fetch('http://127.0.0.1:5000/get_random_questions');
-                const response = await fetch('http://127.0.0.1:5000/get_random_questions');
+                const response = await fetch('https://telecrm-phishing.onrender.com/get_random_questions');
                 if (!response.ok) {
                     throw new Error('Failed to fetch questions');
                 }
@@ -244,7 +244,7 @@ export default {
 
                 // Send answers and score to the backend
                 // const response = await fetch(`http://127.0.0.1:5000/submit_answers/${this.colleague_id}`, {
-                const response = await fetch(`http://127.0.0.1:5000/submit_answers/${this.colleague_id}`, {
+                const response = await fetch(`https://telecrm-phishing.onrender.com/submit_answers/${this.colleague_id}`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -276,7 +276,7 @@ export default {
         async updateReportStatus(colleagueId, score) {
             try {
                 // const response = await fetch(`http://127.0.0.1:5000/update_report_status/${colleagueId}`, {
-                const response = await fetch(`http://127.0.0.1:5000/update_report_status/${colleagueId}`, {
+                const response = await fetch(`https://telecrm-phishing.onrender.com/update_report_status/${colleagueId}`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -297,7 +297,7 @@ export default {
         async downloadPDF(colleagueId) {
             try {
                 // const response = await fetch(`http://127.0.0.1:5000/download_certificate/${colleagueId}`);
-                const response = await fetch(`http://127.0.0.1:5000/download_certificate/${colleagueId}`);
+                const response = await fetch(`https://telecrm-phishing.onrender.com/download_certificate/${colleagueId}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -325,7 +325,7 @@ export default {
             try {
                 // Fetch a new set of random questions
                 // const response = await fetch('http://127.0.0.1:5000/get_random_questions');
-                const response = await fetch('http://127.0.0.1:5000/get_random_questions');
+                const response = await fetch('https://telecrm-phishing.onrender.com/get_random_questions');
                 if (!response.ok) {
                     throw new Error('Failed to fetch new questions');
                 }
@@ -352,14 +352,14 @@ export default {
         async sendEmail(score) {
             const colleagueId = this.$route.params.colleague_id;  // This should be an email, adjust if necessary
             // const studyMaterialLink = `http://127.0.0.1:5000/study-material/${colleagueId}`;
-            const studyMaterialLink = `http://127.0.0.1:5000/study-material/${colleagueId}`;
+            const studyMaterialLink = `https://telecrm-phishing.onrender.com/study-material/${colleagueId}`;
             const emailContent = score >= 70
                 ? { subject: "Training Program Completed", body: `Congratulations on completing the training program! Your score is ${score}.` }
                 : { subject: "Training Program Incomplete", body: `You need to reattempt the training program. Your score is ${score}. You can review the study material [here](${studyMaterialLink}).` };
 
             try {
                 // const response = await fetch(`http://127.0.0.1:5000/send_result_email`, {
-                const response = await fetch(`http://127.0.0.1:5000/send_result_email`, {
+                const response = await fetch(`https://telecrm-phishing.onrender.com/send_result_email`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
